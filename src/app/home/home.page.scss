@@ -1,0 +1,84 @@
+#container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 25px;
+  line-height: 22px;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+.cardStyle{
+  --ion-text-color: #9F7A33;
+  --ion-item-background: #FFF8E6;
+  box-shadow: none;
+  --background: none;
+}
+
+.clima_icon{
+  color: #85BB6E;
+}
+
+#locationIcon{
+  color: #85BB6E;
+}
+
+.titulo{
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #9F7A33;
+}
+
+.todo{
+  --ion-background-color: #FFF8E6;
+  --ion-toolbar-background: #FFF8E6;
+}
+.ion-toolbar{
+  --border-width: none;
+  --border-style: none;
+}
+.header-md::after{
+  background-image: none;
+  content: none;
+}
+
+.ciudad{
+  display: flex;
+  justify-content: space-around;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+#temp{
+  display: flex;
+  flex-direction: column;
+  font-weight: 300;
+  font-size: 4rem;
+  text-align: center;
+  background-color: #85BB6E;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  margin-left: 10px;
+  color: #302933;
+}
+
+#status{
+  text-transform: capitalize;
+}
