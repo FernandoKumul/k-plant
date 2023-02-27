@@ -10,7 +10,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'techo',
+    loadChildren: () => import('./techo/techo.module').then( m => m.TechoPageModule)
   },
+
 ];
 
 @NgModule({

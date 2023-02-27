@@ -10,8 +10,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="todo" scrollY="false">
-  <ion-header collapse="condense"></ion-header>
-
   <ion-card class="cardStyle flex">
     <ion-item lines="none">
       <ion-label class="ciudad">
@@ -45,10 +43,18 @@
     <ion-item lines="none">
       <span>Temperatura Mínima: </span>
       <span slot="end">{{(weatherTemp.temp_min - 273.15).toFixed(0)}}º</span>
-    </ion-item>
+    </ion-item> -->
     <ion-item lines="none">
+      <ion-icon name="water-outline" class="iconos"></ion-icon>
       <span>Humedad: </span>
       <span slot="end">{{this.firebaseService.Humedad}}%</span>
+    </ion-item>
+    <ion-item lines="none">
+      <a [routerLink]="['/techo']" class="boton"
+        ><ion-icon name="options-outline" class="iconos"></ion-icon
+      ></a>
+      <span>Apertura del techo: </span>
+      <span slot="end">{{this.firebaseService.Aper}}%</span>
     </ion-item>
   </ion-card>
 </ion-content>

@@ -14,6 +14,7 @@ const database = getDatabase(app);
 export class FirebaseService {
   TempTR = 0;
   Humedad = 0;
+  Aper = 0;
   constructor() {}
     //funcion para mostrar los datos
     mostrarDatoTR(ruta:string){
@@ -27,6 +28,9 @@ export class FirebaseService {
 
         if(ruta == '/Humedad'){
           this.Humedad = dato;
+        }
+        if(ruta == '/Automatico/Apertura'){
+          this.Aper = dato;
         }
   
       });
