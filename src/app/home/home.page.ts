@@ -24,6 +24,7 @@ export class HomePage {
     ngOnInit(){
     this.firebaseService.mostrarDatoTR('/Temperatura');
     this.firebaseService.mostrarDatoTR('/Humedad');
+    this.firebaseService.mostrarDatoTR('/Automatico/Apertura');
   }
   loadData(){
     this.HttpClient.get(`${API_URL}/weather?q=${"Cancun"}&appid=${API_KEY}`).subscribe(results =>{
