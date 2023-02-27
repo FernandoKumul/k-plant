@@ -1,7 +1,7 @@
 <ion-header
   [translucent]="true"
   class="todo"
-  style="background-color: #fff8e6;"
+  style="background-color: #fff8e6"
   no-border
 >
   <ion-toolbar>
@@ -9,18 +9,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="todo">
+<ion-content [fullscreen]="true" class="todo" scrollY="false">
   <ion-header collapse="condense"></ion-header>
 
-  <ion-card class="cardStyle">
+  <ion-card class="cardStyle flex">
     <ion-item lines="none">
       <ion-label class="ciudad">
         <span>
           <ion-icon name="location" id="locationIcon"></ion-icon>
           {{cityName}}
-        </span>
-        <span>
-          {{todayDate | date: "dd MMM"}}
         </span>
       </ion-label>
     </ion-item>
@@ -29,8 +26,6 @@
         <p>{{this.firebaseService.TempTR}}º</p>
       </span>
     </ion-item>
-  </ion-card>
-  <ion-card class="cardStyle">
     <ion-item lines="none">
       <img
         [src]="weatherIcon"
@@ -41,6 +36,8 @@
       />
       <p id="status">{{weatherStatus}}</p>
     </ion-item>
+  </ion-card>
+  <ion-card class="cardStyle">
     <ion-item lines="none">
       <span>Temperatura Máxima: </span>
       <span slot="end">{{(weatherTemp.temp_max - 273.15).toFixed(0)}}º</span>
