@@ -22,41 +22,41 @@
   text-decoration: none;
 }
 
-.cardStyle{
-  --ion-text-color: #9F7A33;
-  --ion-item-background: #FFF8E6;
+.cardStyle {
+  --ion-text-color: #9f7a33;
+  --ion-item-background: #fff8e6;
   box-shadow: none;
   --background: none;
 }
 
-.clima_icon{
-  color: #85BB6E;
+.clima_icon {
+  color: #85bb6e;
 }
 
-#locationIcon{
-  color: #85BB6E;
+#locationIcon {
+  color: #85bb6e;
 }
 
-.titulo{
+.titulo {
   font-weight: 600;
   font-size: 1.5rem;
-  color: #9F7A33;
+  color: #9f7a33;
 }
 
-.todo{
-  --ion-background-color: #FFF8E6;
-  --ion-toolbar-background: #FFF8E6;
+.todo {
+  --ion-background-color: #fff8e6;
+  --ion-toolbar-background: #fff8e6;
 }
-.ion-toolbar{
+.ion-toolbar {
   --border-width: none;
   --border-style: none;
 }
-.header-md::after{
+.header-md::after {
   background-image: none;
   content: none;
 }
 
-.ciudad{
+.ciudad {
   display: flex;
   justify-content: space-around;
   font-size: 1rem;
@@ -65,28 +65,27 @@
   margin-left: 15px;
 }
 
-#temp{
+#temp {
   font-weight: 300;
   font-size: 4rem;
-  text-align: center;
-  background-color: #85BB6E;
+  background-color: #85bb6e;
   border-radius: 50%;
   width: 200px;
   height: 200px;
   margin-left: 10px;
   color: #302933;
+  text-align: center;
 }
 
-#status{
+#status {
   text-transform: capitalize;
 }
 
-.flex{
+.flex {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .iconos{
   color: #85BB6E;
   width: 35px;
@@ -98,3 +97,4 @@
   width: fit-content;
   height: fit-content;
 }
+
