@@ -1,0 +1,140 @@
+#container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 25px;
+  line-height: 22px;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+.cardStyle {
+  --ion-text-color: #9f7a33;
+  --ion-item-background: #fff8e6;
+  box-shadow: none;
+  --background: none;
+}
+
+.clima_icon {
+  color: #85bb6e;
+}
+
+#locationIcon {
+  color: #85bb6e;
+}
+
+.titulo {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #9f7a33;
+}
+
+.todo {
+  --ion-background-color: #fff8e6;
+  --ion-toolbar-background: #fff8e6;
+}
+.ion-toolbar {
+  --border-width: none;
+  --border-style: none;
+}
+.header-md::after {
+  background-image: none;
+  content: none;
+}
+
+.ciudad {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+#temp {
+  font-weight: 300;
+  font-size: 4rem;
+  background-color: #85bb6e;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  margin-left: 10px;
+  color: #302933;
+  text-align: center;
+}
+
+#status {
+  text-transform: capitalize;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.iconos {
+  color: #85bb6e;
+  width: 35px;
+  height: 35px;
+}
+.boton {
+  background-color: none;
+  background: none;
+  width: fit-content;
+  height: fit-content;
+}
+.botonT {
+  background-color: none;
+  background: none;
+  width: fit-content;
+  height: fit-content;
+  margin: 1rem;
+}
+
+.top{
+    display: flex;
+    align-items: center;
+}
+
+.switch{
+    --handle-background-checked: #85BB6E;
+    --background: #2B422B;
+    --handle-background: #2B422B;
+    --background-checked: #85BB6E;
+}
+
+h3{
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: #9f7a33;
+}
+
+ion-modal {
+  --height: 50%;
+  --border-radius: 16px;
+}
+
+ion-range {
+  --bar-background: #2B422B;
+  --bar-background-active: #85BB6E;
+  --bar-height: 6px;
+  --bar-border-radius: 8px;
+  --knob-background: #85BB6E;
+  --knob-size: 40px;
+  --pin-background: #85BB6E;
+  --pin-color: #fff;
+}

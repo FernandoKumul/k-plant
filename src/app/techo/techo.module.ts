@@ -8,6 +8,7 @@ import { TechoPageRoutingModule } from './techo-routing.module';
 
 import { TechoPage } from './techo.page';
 
+
 @NgModule({
   imports: [
     CommonModule,

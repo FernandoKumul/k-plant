@@ -5,9 +5,52 @@
   no-border
 >
   <ion-toolbar>
-    <ion-label class="ion-text-center"><p class="titulo">K-Plant</p></ion-label>
+    <ion-label class="top">
+      <a [routerLink]="['/home']" class="botonT">
+        <ion-icon name="home" class="iconos"></ion-icon>
+      </a>
+      <p class="titulo">K-Plant</p>
+    </ion-label>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true" class="todo" scrollY="false">
+  <ion-card class="cardStyle">
+    <h3 class="ion-text-center">Techo</h3>
+    <ion-item lines="none">
+      <ion-label>Modo Manual</ion-label>
+      <ion-toggle slot="end" class="switch"></ion-toggle>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label style="width: 100">Ajuste automatico en: </ion-label>
+      <p style="margin-right: 0.5rem">{{this.firebaseService.TempTch}}º</p>
+      <ion-button id="open-modal" expand="block" style="--background: #85bb6e"
+        ><ion-icon name="create-outline"></ion-icon
+      ></ion-button>
+      <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-button (click)="cancel()">Cancelar</ion-button>
+              </ion-buttons>
+              <ion-buttons slot="end">
+                <ion-button (click)="confirm()">Confirmar</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+              <ion-item>
+                <ion-label position="stacked">Temperatura de ajuste</ion-label>
+                <ion-input type="number" [(ngModel)]="temp" required></ion-input>
+              </ion-item>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+  </ion-card>
+  <ion-card class="cardStyle">
+    <h3 class="ion-text-center">Posición</h3>
+    <ion-range (ionChange)="onIonChange($event)" [pin]="true"></ion-range>
+  </ion-card>
 </ion-content>

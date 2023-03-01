@@ -15,22 +15,30 @@ export class FirebaseService {
   TempTR = 0;
   Humedad = 0;
   Aper = 0;
+  TempTch = 0;
   constructor() {}
+    //Para subir datos
+    writeDatos(ruta:string, dato:any){
+      set(ref(database, ruta), dato)
+    }
     //funcion para mostrar los datos
     mostrarDatoTR(ruta:string){
       const starCountRef = ref(database, ruta);
       onValue(starCountRef, (snapshot) => {
         const dato = snapshot.val();
         console.log(dato);
-        if(ruta == '/Temperatura'){
+        if(ruta == '/Sensores/Temperatura'){
           this.TempTR = dato;
         }
 
-        if(ruta == '/Humedad'){
+        if(ruta == '/Sensores/Humedad'){
           this.Humedad = dato;
         }
-        if(ruta == '/Automatico/Apertura'){
+        if(ruta == '/Techo/Apertura'){
           this.Aper = dato;
+        }
+        if(ruta == '/Techo/Temperatura'){
+          this.TempTch = dato;
         }
   
       });

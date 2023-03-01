@@ -22,9 +22,9 @@ export class HomePage {
     this.loadData();
   }
     ngOnInit(){
-    this.firebaseService.mostrarDatoTR('/Temperatura');
-    this.firebaseService.mostrarDatoTR('/Humedad');
-    this.firebaseService.mostrarDatoTR('/Automatico/Apertura');
+    this.firebaseService.mostrarDatoTR('/Sensores/Temperatura');
+    this.firebaseService.mostrarDatoTR('/Sensores/Humedad');
+    this.firebaseService.mostrarDatoTR('/Techo/Apertura');
   }
   loadData(){
     this.HttpClient.get(`${API_URL}/weather?q=${"Cancun"}&appid=${API_KEY}`).subscribe(results =>{
