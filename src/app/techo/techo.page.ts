@@ -28,7 +28,7 @@ export class TechoPage implements OnInit{
     if (ev.detail.role === 'confirm') {
       this.valor = `${ev.detail.data}`;
       this.firebaseService.TempTch = this.valor
-      this.firebaseService.writeDatos('/Techo/Temperatura', this.valor)
+      this.firebaseService.writeDatos('/Techo/Temperatura', Number(this.valor))
     }
   }
   onIonChange(ev: Event) {
