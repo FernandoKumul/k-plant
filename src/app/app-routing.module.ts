@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'techo',
     loadChildren: () => import('./techo/techo.module').then( m => m.TechoPageModule)
   },
+  {
+    path: 'graficas',
+    loadChildren: () => import('./graficas/graficas.module').then( m => m.GraficasPageModule)
+  },
 
 ];
 
