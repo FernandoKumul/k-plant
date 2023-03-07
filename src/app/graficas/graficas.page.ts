@@ -22,7 +22,7 @@ export class GraficasPage implements AfterViewInit {
   }
 
   doughnutChartMethod(){
-    this.doughnurtChart = new Chart(this.doughnutCanvas.nativeElement, {
+    this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
       type:'doughnut',
       data: {
         labels: []
