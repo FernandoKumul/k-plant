@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'techo',
     loadChildren: () => import('./techo/techo.module').then( m => m.TechoPageModule)
   },
+  {
+    path: 'historial',
+    loadChildren: () => import('./historial/historial.module').then( m => m.HistorialPageModule)
+  },
 
 ];
 
