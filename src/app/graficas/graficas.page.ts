@@ -27,12 +27,12 @@ export class GraficasPage implements AfterViewInit {
     this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
       type: 'doughnut',
       data: {
-        labels: ['BJP', 'Congress', 'AAP', 'CPM', 'SP'],
+        labels: ['temperatura'],
         datasets: [{
           label: '# of Votes',
-          data: [50, 29, 15, 10, 7],
+          data: [50,50],
           backgroundColor: [
-            'rgba(255, 159, 64, 0.2)',
+            'rgba(250, 159, 64, 0.2)',
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
             'rgba(255, 206, 86, 0.2)',
