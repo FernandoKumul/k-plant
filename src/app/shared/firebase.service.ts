@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set, onValue } from "firebase/database";
+import { getDatabase, ref, set, onValue, get, child } from "firebase/database";
 // import { environment } from 'src/environments/environment';
 import { environment } from 'src/environments/environment.prod';
 
@@ -20,6 +20,18 @@ export class FirebaseService {
     //Para subir datos
     writeDatos(ruta:string, dato:any){
       set(ref(database, ruta), dato)
+    }
+
+    viewOneDateTR(){
+get(child(ref(database), '/Registro')).then((snapshot) => {
+  if (snapshot.exists()) {
+    return (snapshot.val());
+  } else {
+    console.log("No data available");
+  }
+}).catch((error) => {
+  console.error(error);
+});
     }
     //funcion para mostrar los datos
     mostrarDatoTR(ruta:string){
