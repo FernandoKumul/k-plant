@@ -13,8 +13,26 @@ export class TechoPage implements OnInit{
   @ViewChild(IonModal) modal: any;
   lastEmittedValue :any
   temp: any
-  valor: any;
-  
+  valor: any
+  estado = true
+  rango: any
+  editar = true
+  cambioM() {
+    console.log("Estado: "+ this.estado);
+    this.firebaseService.writeDatos('/Techo/Manual/Estado', this.estado)
+    if (this.estado == true){
+      this.rango = false
+    } else{
+      this.rango = true
+    }
+
+    if (this.estado == false){
+      this.editar = false
+    }else{
+      this.editar = true
+    }
+  }
+
   cancel() {
     return this.modal.dismiss(null, 'cancel');
   }
@@ -42,6 +60,7 @@ export class TechoPage implements OnInit{
     this.firebaseService.mostrarDatoTR('/Techo/Temperatura');
     this.firebaseService.mostrarDatoTR('/Sensores/Humedad');
     this.firebaseService.mostrarDatoTR('/Techo/Apertura');
+    this.firebaseService.mostrarDatoTR('/Techo/Manual/Estado');
   }
 }
 

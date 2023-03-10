@@ -16,6 +16,7 @@ export class FirebaseService {
   Humedad = 0;
   Aper = 0;
   TempTch = 0;
+  Modo = false;
   constructor() {}
     //Para subir datos
     writeDatos(ruta:string, dato:any){
@@ -51,6 +52,9 @@ get(child(ref(database), '/Registro')).then((snapshot) => {
         }
         if(ruta == '/Techo/Temperatura'){
           this.TempTch = dato;
+        }
+        if(ruta == '/Techo/Manual/Estado'){
+          this.Modo = dato;
         }
   
       });

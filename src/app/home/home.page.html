@@ -34,6 +34,10 @@
       />
       <p id="status">{{weatherStatus}}</p>
     </ion-item>
+    <ion-item lines="none">
+      <a [routerLink]="['/historial']" class="boton"><ion-icon name="file-tray-full-outline" class="iconos"></ion-icon></a>
+      <a [routerLink]="['/historial']" class="histo">Historial</a>
+    </ion-item>
   </ion-card>
   <ion-card class="cardStyle">
     <ion-item lines="none">
@@ -42,9 +46,7 @@
       <span slot="end">{{this.firebaseService.Humedad}}%</span>
     </ion-item>
     <ion-item lines="none">
-      <a [routerLink]="['/techo']" class="boton"
-        ><ion-icon name="options-outline" class="iconos"></ion-icon
-      ></a>
+      <a [routerLink]="['/techo']" class="boton"><ion-icon name="options-outline" class="iconos"></ion-icon></a>
       <span>Apertura del techo: </span>
       <span slot="end">{{this.firebaseService.Aper}}%</span>
     </ion-item>
