@@ -14,6 +14,19 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="todo" scrollY="false">
-  
+
+<ion-content [fullscreen]="true">
+  <div class="ion-padding">
+        <!--# es lo mismo que id-->
+
+    <ion-card style="background-color: #fff8e6">
+      <ion-card-header>
+        Hoy :3 
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #lineCanvas style="position: relative; height: 25vh; width: 40vw;"></canvas>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
 </ion-content>

@@ -1,81 +1,54 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-
-//descargar chart.js con npm i chart.js --save
+import { AfterViewInit, 
+  Component, 
+  ElementRef,OnInit, ViewChild } from '@angular/core';
+//npm i chart.js --save
 import { Chart } from 'chart.js/auto';
-import { type } from 'os';
-
 @Component({
   selector: 'app-graficas',
   templateUrl: './graficas.page.html',
   styleUrls: ['./graficas.page.scss'],
 })
 export class GraficasPage implements AfterViewInit {
-  @ViewChild('doughnutCanvas') private doughnutCanvas!: ElementRef;
+  // Importing ViewChild. We need @ViewChild decorator to get a reference to the local variable 
+  // that we have added to the canvas element in the HTML template.
   @ViewChild('lineCanvas') private lineCanvas!: ElementRef;
-  doughnutChart: any;
   lineChart: any;
 
-  constructor() { }
+  constructor() {
 
-  ngAfterViewInit(){
-    this.doughnutChartMethod();
   }
-
-  doughnutChartMethod(){
-    this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
-      type:'doughnut',
-    this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
-      type: 'doughnut',
-      data: {
-        labels: ['temperatura'],
-        datasets: [{
-          label: '# of Votes',
-          data: [50,50],
-          backgroundColor: [
-            'rgba(250, 159, 64, 0.2)',
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)'
-          ],
-          hoverBackgroundColor: [
-            '#FFCE56',
-            '#FF6384',
-            '#36A2EB',
-            '#FFCE56',
-            '#FF6384'
-          ]
-        }]
-      }
-    });
+  // When we try to call our chart to initialize methods in ngOnInit() it shows an error nativeElement of undefined. 
+  // So, we need to call all chart methods in ngAfterViewInit() where @ViewChild and @ViewChildren will be resolved.
+  ngAfterViewInit() {
+    this.lineChartMethod();
   }
-
+  
   lineChartMethod() {
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
       type: 'line',
       data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'],
+        labels: ['6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00','17:00','18:00'],
         datasets: [
           {
-            label: 'Sell per week',
-            fill: false,
-            backgroundColor: 'rgba(75,192,192,0.4)',
+            label: 'Temperatura por hora',
+            fill: true,
+            backgroundColor: 'rgb(255, 248, 230)',
             borderColor: 'rgba(75,192,192,1)',
             borderCapStyle: 'butt',
             borderDash: [],
             borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
             pointBorderColor: 'rgba(75,192,192,1)',
             pointBackgroundColor: '#fff',
             pointBorderWidth: 1,
-            pointHoverRadius: 5,
+            pointHoverRadius: 1,
             pointHoverBackgroundColor: 'rgba(75,192,192,1)',
             pointHoverBorderColor: 'rgba(220,220,220,1)',
             pointHoverBorderWidth: 2,
-            pointRadius: 1,
+            pointRadius: 4,
             pointHitRadius: 10,
-            data: [65, 59, 80, 81, 56, 55, 40, 10, 5, 50, 10, 15],
+            data: [30, 41, 30, 50, 30, 18, 40, 10, 5, 50, 30, 15,33],
             spanGaps: false,
+            tension:0.4,
           }
         ]
       }
