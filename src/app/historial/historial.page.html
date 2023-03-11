@@ -1,16 +1,25 @@
-<ion-header [translucent]="true">
+<ion-header
+  [translucent]="true"
+  class="todo"
+  style="background-color: #fff8e6"
+  no-border
+>
   <ion-toolbar>
-    <ion-title>
-      Historial
-    </ion-title>
+    <ion-label class="top">
+      <a [routerLink]="['/home']" class="botonT">
+        <ion-icon name="home" class="iconos"></ion-icon>
+      </a>
+      <p class="titulo">K-Plant</p>
+    </ion-label>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content [fullscreen]="true">
   <div class="ion-padding">
         <!--# es lo mismo que id-->
 
-    <ion-card>
+    <ion-card style="background-color: #fff8e6">
       <ion-card-header>
         Hoy :3 
       </ion-card-header>

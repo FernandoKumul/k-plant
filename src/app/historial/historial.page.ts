@@ -1,26 +1,39 @@
-import { AfterViewInit, 
-  Component, 
-  ElementRef,OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { FirebaseService } from '../shared/firebase.service'
 //npm i chart.js --save
 import { Chart } from 'chart.js/auto';
+
 @Component({
-  selector: 'app-graficas',
-  templateUrl: './graficas.page.html',
-  styleUrls: ['./graficas.page.scss'],
+  selector: 'app-historial',
+  templateUrl: './historial.page.html',
+  styleUrls: ['./historial.page.scss'],
 })
-export class GraficasPage implements AfterViewInit {
+export class HistorialPage implements AfterViewInit {
   // Importing ViewChild. We need @ViewChild decorator to get a reference to the local variable 
   // that we have added to the canvas element in the HTML template.
   @ViewChild('lineCanvas') private lineCanvas!: ElementRef;
   lineChart: any;
+  datos = [10, 7];
 
-  constructor() {
-
+  constructor(public firebaseService: FirebaseService) {
+    this.datosGrafica()
   }
   // When we try to call our chart to initialize methods in ngOnInit() it shows an error nativeElement of undefined. 
   // So, we need to call all chart methods in ngAfterViewInit() where @ViewChild and @ViewChildren will be resolved.
   ngAfterViewInit() {
-    this.lineChartMethod();
+  }
+
+  
+  datosGrafica(){
+    this.firebaseService.getDatos().then((Registro) => {
+
+      const resultado = JSON.parse(JSON.stringify(Registro))
+      console.log(resultado);
+      this.lineChartMethod();
+      this.datos[1] = 0;
+
+    })
   }
   
   lineChartMethod() {
@@ -32,8 +45,8 @@ export class GraficasPage implements AfterViewInit {
           {
             label: 'Temperatura por hora',
             fill: true,
-            backgroundColor: 'rgb(255, 248, 230)',
-            borderColor: 'rgba(75,192,192,1)',
+            backgroundColor: 'rgba(76, 111, 191,0.4)',
+            borderColor: 'rgba(76, 111, 191,1)',
             borderCapStyle: 'butt',
             borderDash: [],
             borderDashOffset: 0.0,
@@ -57,3 +70,4 @@ export class GraficasPage implements AfterViewInit {
 
 
 }
+

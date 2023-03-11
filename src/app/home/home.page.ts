@@ -19,7 +19,7 @@ export class HomePage {
   weatherIcon :any
   weatherStatus :any
   constructor(public HttpClient:HttpClient, public firebaseService: FirebaseService) {
-    this.loadData(), this.datosGrafica();
+    this.loadData();
   }
     ngOnInit(){
     this.firebaseService.mostrarDatoTR('/Sensores/Temperatura');
@@ -28,13 +28,6 @@ export class HomePage {
 
   }
 
-  datosGrafica(){
-    this.firebaseService.getDatos().then((Registro) => {
-
-      const resultado = JSON.parse(JSON.stringify(Registro))
-      console.log(resultado)
-    })
-  }
 
   loadData(){
     this.HttpClient.get(`${API_URL}/weather?q=${"Cancun"}&appid=${API_KEY}`).subscribe(results =>{

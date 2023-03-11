@@ -16,6 +16,7 @@ export class FirebaseService {
   Humedad = 0;
   Aper = 0;
   TempTch = 0;
+  Modo = false;
   Registro = {}
   constructor() {}
     //Para subir datos
@@ -49,6 +50,9 @@ export class FirebaseService {
         }
         if(ruta == '/Techo/Temperatura'){
           this.TempTch = dato;
+        }
+        if(ruta == '/Techo/Manual/Estado'){
+          this.Modo = dato;
         }
   
       });

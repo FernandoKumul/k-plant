@@ -10,13 +10,18 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-  },  {
+  },
+  {
     path: 'techo',
     loadChildren: () => import('./techo/techo.module').then( m => m.TechoPageModule)
   },
   {
     path: 'graficas',
     loadChildren: () => import('./graficas/graficas.module').then( m => m.GraficasPageModule)
+  },
+  {
+    path: 'historial',
+    loadChildren: () => import('./historial/historial.module').then( m => m.HistorialPageModule)
   },
 
 ];
