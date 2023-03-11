@@ -16,29 +16,27 @@ export class FirebaseService {
   Humedad = 0;
   Aper = 0;
   TempTch = 0;
+  Registro = {}
   constructor() {}
     //Para subir datos
     writeDatos(ruta:string, dato:any){
       set(ref(database, ruta), dato)
     }
 
-    viewOneDateTR(){
-get(child(ref(database), '/Registro')).then((snapshot) => {
-  if (snapshot.exists()) {
-    return (snapshot.val());
-  } else {
-    console.log("No data available");
+  getDatos(){
+      return new Promise ((resolve, reject) =>{
+        get(child(ref(database), '/Registro')).then((snapshot) => {
+            this.Registro = snapshot.val();
+            resolve(this.Registro);
+        });
+      })
   }
-}).catch((error) => {
-  console.error(error);
-});
-    }
+
     //funcion para mostrar los datos
     mostrarDatoTR(ruta:string){
       const starCountRef = ref(database, ruta);
       onValue(starCountRef, (snapshot) => {
         const dato = snapshot.val();
-        console.log(dato);
         if(ruta == '/Sensores/Temperatura'){
           this.TempTR = dato;
         }
@@ -54,5 +52,7 @@ get(child(ref(database), '/Registro')).then((snapshot) => {
         }
   
       });
+      console.log(this.Humedad);
+
     }
 }
