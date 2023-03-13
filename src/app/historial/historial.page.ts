@@ -62,7 +62,7 @@ export class HistorialPage implements AfterViewInit {
             const temperatura = obj[propiedad].Temperatura;
             temperaturas.push(temperatura); // Agregamos la temperatura al array de temperaturas
           } else {
-            temperaturas.push(-1); // Si no hay registro, agregamos un valor por defecto (-1) al array de temperaturas
+            // temperaturas.push(-1); // Si no hay registro, agregamos un valor por defecto (-1) al array de temperaturas
           }
           horas.push(propiedad + ':00'); // Generamos una hora en formato HH:00 para cada registro y la agregamos al array de horas
         }
