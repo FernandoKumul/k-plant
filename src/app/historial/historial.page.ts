@@ -46,24 +46,20 @@ export class HistorialPage implements AfterViewInit {
         }
       });
 
-      // for(let i of resultado1)
-
-
-      const resultado = JSON.parse(JSON.stringify(Registro)); // Convertimos los datos a JSON
-      ; // Convertimos los datos a JSON
-      const promedios: {[fecha: string]: number} = {}; // Inicializamos un objeto vacío para guardar los promedios de temperatura
-      const temperaturasHoraPorHora: number[][] = []; // Inicializamos un array vacío para guardar las temperaturas hora por hora
-      const horas: string[] = []; // Inicializamos un array vacío para guardar las horas
+      const resultado = JSON.parse(JSON.stringify(Registro));
+      const promedios: {[fecha: string]: number} = {}; 
+      const temperaturasHoraPorHora: number[][] = []; 
+      const horas: string[] = []; 
   
-      resultado.Historial.forEach((obj: any) => { // Iteramos sobre cada objeto de Historial
-        const fecha = obj.Fecha; // Obtenemos la fecha del objeto
+      resultado.Historial.forEach((obj: any) => { 
+        const fecha = obj.Fecha; 
         const horasRegistro = obj.HorasRegistro; // Obtenemos la cantidad de horas registradas en el objeto
-        const temperaturas: number[] = []; // Inicializamos un array vacío para guardar las temperaturas de cada hora
+        const temperaturas: number[] = []; 
         for (let i = 0; i < horasRegistro; i++) { // Iteramos sobre cada hora registrada en el objeto
           const propiedad = i.toString(); // Convertimos el número de hora a string
           if (obj[propiedad] && typeof obj[propiedad] !== "string" && obj[propiedad].Temperatura) {
             // Si existe un registro para esa hora y la temperatura es un número
-            const temperatura = obj[propiedad].Temperatura; // Obtenemos la temperatura de ese registro
+            const temperatura = obj[propiedad].Temperatura;
             temperaturas.push(temperatura); // Agregamos la temperatura al array de temperaturas
           } else {
             temperaturas.push(-1); // Si no hay registro, agregamos un valor por defecto (-1) al array de temperaturas
@@ -73,20 +69,20 @@ export class HistorialPage implements AfterViewInit {
         temperaturasHoraPorHora.push(temperaturas); // Agregamos el array de temperaturas de cada hora al array principal
         let sumaTemperaturas = 0;
         let cantTemperaturas = 0;
-        for (let i = 0; i < horasRegistro; i++) { // Iteramos sobre cada hora registrada en el objeto
+        for (let i = 0; i < horasRegistro; i++) { 
           if (temperaturas[i] !== null) { // Si hay registro de temperatura para esa hora
             sumaTemperaturas += temperaturas[i]; // Sumamos la temperatura al total
             cantTemperaturas++; // Aumentamos el contador de temperaturas
           }
         }
-        if (cantTemperaturas > 0) { // Si hay al menos un registro de temperatura
+        if (cantTemperaturas > 0) { 
           const promedio = sumaTemperaturas / cantTemperaturas; // Calculamos el promedio de temperatura
           promedios[fecha] = +promedio.toFixed(0); // Convertimos el promedio a número y redondeamos sin decimales, luego lo agregamos al objeto de promedios
         }
       });
-      console.log(promedios); // Mostramos el objeto con los promedios de temperatura en la consola
-      console.log(temperaturasHoraPorHora); // Mostramos el array con las temperaturas hora por hora en la consola
-      console.log(resultado); // Mostramos los datos completos en la consola
+      console.log(promedios); 
+      console.log(temperaturasHoraPorHora); 
+      console.log(resultado);
       this.lineChartMethod(this.datos); 
       this.lineChartMethod2(promedios); 
     });
