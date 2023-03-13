@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, OnInit } from '@angular/core';
 import { AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { FirebaseService } from '../shared/firebase.service'
@@ -22,7 +21,7 @@ export class HistorialPage implements AfterViewInit {
   @ViewChild('Canvaxd') private Canvaxd!: ElementRef;
   lineChart: any;
   lineChart2: any;
-  datos = [10, 7];
+  datos:any = [];
 
   constructor(public firebaseService: FirebaseService) {
     this.datosGrafica()
@@ -34,7 +33,24 @@ export class HistorialPage implements AfterViewInit {
   
   datosGrafica() {
     this.firebaseService.getDatos().then((Registro: any) => { // Obtenemos los datos desde Firebase
+      const resultado1 = JSON.parse(JSON.stringify(Registro))
+      const laFecha = moment();
+      
+      const fechaHoy = laFecha.format('DD/MM/YYYY');
+      resultado1.Historial.forEach((element:any, index:any) => {//Obtiene todos los registros diarios
+        if(element.Fecha == fechaHoy){ //Solo se ejecuta para el dia hoy
+          for(let i = 0; i<element.HorasRegistro; i++){
+            this.datos[(element[i].Hora)-6] = element[i].Hora //Las horas de hoy se asignan al array
+          }
+          return
+        }
+      });
+
+      // for(let i of resultado1)
+
+
       const resultado = JSON.parse(JSON.stringify(Registro)); // Convertimos los datos a JSON
+      ; // Convertimos los datos a JSON
       const promedios: {[fecha: string]: number} = {}; // Inicializamos un objeto vacío para guardar los promedios de temperatura
       const temperaturasHoraPorHora: number[][] = []; // Inicializamos un array vacío para guardar las temperaturas hora por hora
       const horas: string[] = []; // Inicializamos un array vacío para guardar las horas
@@ -71,12 +87,12 @@ export class HistorialPage implements AfterViewInit {
       console.log(promedios); // Mostramos el objeto con los promedios de temperatura en la consola
       console.log(temperaturasHoraPorHora); // Mostramos el array con las temperaturas hora por hora en la consola
       console.log(resultado); // Mostramos los datos completos en la consola
-      this.lineChartMethod(temperaturasHoraPorHora); 
+      this.lineChartMethod(this.datos); 
       this.lineChartMethod2(promedios); 
     });
   }
 
-  lineChartMethod(temperaturasHoraPorHora: number[][]) {
+  lineChartMethod(datos: number[][]) {
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
       type: 'line',
       data: {
@@ -99,20 +115,13 @@ export class HistorialPage implements AfterViewInit {
             pointHoverBorderWidth: 2,
             pointRadius: 4,
             pointHitRadius: 10,
-            data: [],
+            data: datos,
             spanGaps: false,
             tension: 0.4,
           }
         ]
       }
     });
-  
-    for (let hora = 0; hora < temperaturasHoraPorHora.length; hora++) {
-      const horaLabel = hora + 6; // Obtener la hora a partir del índice
-      this.lineChart.data.labels[hora] = horaLabel.toString() + ':00'; // Actualizar el label con la hora correspondiente
-      this.lineChart.data.datasets[0].data = temperaturasHoraPorHora[hora]; // Reemplazar los datos de la gráfica
-      this.lineChart.update(); // Actualizar la gráfica con los nuevos datos
-    }
   }
 
   lineChartMethod2(promedios: {[fecha: string]: number}) { // Agregamos el objeto con los promedios como argumento
@@ -133,7 +142,7 @@ export class HistorialPage implements AfterViewInit {
         labels: etiquetasUltimos7dias,
         datasets: [
           {
-            label: 'Promedio de temperatura de los últimos 7 días',
+            label: 'Promedio en los últimos 7 días',
             fill: true,
             backgroundColor: 'rgba(76, 111, 191,0.4)',
             borderColor: 'rgba(76, 111, 191,1)',
