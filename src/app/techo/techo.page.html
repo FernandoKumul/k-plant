@@ -19,7 +19,7 @@
     <h3 class="ion-text-center">Techo</h3>
     <ion-item lines="none">
       <ion-label>Modo Manual</ion-label>
-      <ion-toggle slot="end" [checked]="true" class="switch" (ionChange)="cambioM()" [(ngModel)]="estado"></ion-toggle>
+      <ion-toggle slot="end" [checked]="this.firebaseService.Modo" class="switch" (ionChange)="cambioM()" [(ngModel)]="estado"></ion-toggle>
     </ion-item>
     <ion-item lines="none">
       <ion-label style="width: 100">Ajuste automatico en: </ion-label>
@@ -28,8 +28,8 @@
       <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
         <ng-template>
           <ion-header>
-            <ion-toolbar>
-              <ion-buttons slot="start">
+            <ion-toolbar class="todoT">
+              <ion-buttons slot="start" style="--color: #9f7a33;">
                 <ion-button (click)="cancel()">Cancelar</ion-button>
               </ion-buttons>
               <ion-buttons slot="end">
@@ -38,7 +38,7 @@
             </ion-toolbar>
           </ion-header>
           <ion-content class="ion-padding">
-              <ion-item>
+              <ion-item class="custom">
                 <ion-label position="stacked">Temperatura de ajuste</ion-label>
                 <ion-input type="number" [(ngModel)]="temp"></ion-input>
               </ion-item>
@@ -49,6 +49,6 @@
   </ion-card>
   <ion-card class="cardStyle">
     <h3 class="ion-text-center">Posición</h3>
-    <ion-range (ionChange)="onIonChange($event)" [step]="10" [pin]="true" [ticks]="true" [snaps]="true" [min]="0" [max]="100" [disabled]="rango"></ion-range>
+    <ion-range (ionChange)="onIonChange($event)" [value]="this.firebaseService.Aper" [step]="10" [pin]="true" [ticks]="true" [snaps]="true" [min]="0" [max]="100" [disabled]="rango"></ion-range>
   </ion-card>
 </ion-content>

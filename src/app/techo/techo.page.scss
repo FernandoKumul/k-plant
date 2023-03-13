@@ -47,6 +47,10 @@
   --ion-background-color: #fff8e6;
   --ion-toolbar-background: #fff8e6;
 }
+.todoT {
+  --ion-background-color: #fff8e6;
+  --ion-toolbar-background: #9f7a33;
+}
 .ion-toolbar {
   --border-width: none;
   --border-style: none;
@@ -137,4 +141,15 @@ ion-range {
   --knob-size: 30px;
   --pin-background: #85BB6E;
   --pin-color: #fff;
+}
+
+.custom {
+  --background: #fff8e6;
+  --color: #9f7a33;
+  --placeholder-color: #ddd;
+  --placeholder-opacity: .8;
+}
+
+.item-has-focus{
+  caret-color: #9f7a33;
 }

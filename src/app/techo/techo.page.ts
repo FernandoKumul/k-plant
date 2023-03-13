@@ -25,7 +25,6 @@ export class TechoPage implements OnInit{
     } else{
       this.rango = true
     }
-
     if (this.estado == false){
       this.editar = false
     }else{

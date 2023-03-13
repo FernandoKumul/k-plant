@@ -16,7 +16,7 @@ export class FirebaseService {
   Humedad = 0;
   Aper = 0;
   TempTch = 0;
-  Modo = false;
+  Modo = Boolean;
   Registro = {}
   constructor() {}
     //Para subir datos
