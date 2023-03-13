@@ -18,7 +18,7 @@ export class TechoPage implements OnInit{
   rango: any
   editar = true
   cambioM() {
-    console.log("Estado: "+ this.estado);
+    console.log("Estado: "+ this.firebaseService.Modo);
     this.firebaseService.writeDatos('/Techo/Manual/Estado', this.estado)
     if (this.estado == true){
       this.rango = false
