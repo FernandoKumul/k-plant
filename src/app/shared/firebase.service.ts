@@ -13,10 +13,11 @@ const database = getDatabase(app);
 
 export class FirebaseService {
   TempTR = 0;
+  TempTRR = 0;
   Humedad = 0;
   Aper = 0;
   TempTch = 0;
-  Modo = false;
+  Modo = Boolean;
   Registro = {}
   constructor() {}
     //Para subir datos
@@ -56,7 +57,13 @@ export class FirebaseService {
         }
   
       });
-      console.log(this.Humedad);
 
+    }
+    tempTRR(){
+      const starCountRef = ref(database, '/Sensores/Temperatura');
+      onValue(starCountRef, (snapshot) => {
+        const dato = snapshot.val();
+        this.TempTRR = Math.floor(dato)
+      });
     }
 }

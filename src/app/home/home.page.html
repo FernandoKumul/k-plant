@@ -21,7 +21,7 @@
     </ion-item>
     <ion-item lines="none">
       <span id="temp">
-        <p>{{this.firebaseService.TempTR}}º</p>
+        <p>{{this.firebaseService.TempTRR}}º</p>
       </span>
     </ion-item>
     <ion-item lines="none">
@@ -47,7 +47,8 @@
     </ion-item>
     <ion-item lines="none">
       <a [routerLink]="['/techo']" class="boton"><ion-icon name="options-outline" class="iconos"></ion-icon></a>
-      <span>Apertura del techo: </span>
+      <a [routerLink]="['/techo']" class="boton" style="text-decoration: none;"><span class="histo">Apertura del techo: </span></a>
+      
       <span slot="end">{{this.firebaseService.Aper}}%</span>
     </ion-item>
   </ion-card>

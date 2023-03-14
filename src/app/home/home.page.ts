@@ -22,7 +22,7 @@ export class HomePage {
     this.loadData();
   }
     ngOnInit(){
-    this.firebaseService.mostrarDatoTR('/Sensores/Temperatura');
+    this.firebaseService.tempTRR();
     this.firebaseService.mostrarDatoTR('/Sensores/Humedad');
     this.firebaseService.mostrarDatoTR('/Techo/Apertura');
 

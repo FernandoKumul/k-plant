@@ -47,41 +47,25 @@ export class HistorialPage implements AfterViewInit {
       });
 
       const resultado = JSON.parse(JSON.stringify(Registro));
-      const promedios: {[fecha: string]: number} = {}; 
-      const temperaturasHoraPorHora: number[][] = []; 
-      const horas: string[] = []; 
-  
-      resultado.Historial.forEach((obj: any) => { 
-        const fecha = obj.Fecha; 
-        const horasRegistro = obj.HorasRegistro; // Obtenemos la cantidad de horas registradas en el objeto
-        const temperaturas: number[] = []; 
-        for (let i = 0; i < horasRegistro; i++) { // Iteramos sobre cada hora registrada en el objeto
-          const propiedad = i.toString(); // Convertimos el número de hora a string
-          if (obj[propiedad] && typeof obj[propiedad] !== "string" && obj[propiedad].Temperatura) {
-            // Si existe un registro para esa hora y la temperatura es un número
-            const temperatura = obj[propiedad].Temperatura;
-            temperaturas.push(temperatura); // Agregamos la temperatura al array de temperaturas
-          } else {
-            temperaturas.push(-1); // Si no hay registro, agregamos un valor por defecto (-1) al array de temperaturas
-          }
-          horas.push(propiedad + ':00'); // Generamos una hora en formato HH:00 para cada registro y la agregamos al array de horas
-        }
-        temperaturasHoraPorHora.push(temperaturas); // Agregamos el array de temperaturas de cada hora al array principal
+      const promedios: {[fecha: string]: number} = {};
+      resultado.Historial.forEach((obj: any) => {
+        const fecha = obj.Fecha;
+        const horasRegistro = obj.HorasRegistro;
         let sumaTemperaturas = 0;
         let cantTemperaturas = 0;
-        for (let i = 0; i < horasRegistro; i++) { 
-          if (temperaturas[i] !== null) { // Si hay registro de temperatura para esa hora
-            sumaTemperaturas += temperaturas[i]; // Sumamos la temperatura al total
-            cantTemperaturas++; // Aumentamos el contador de temperaturas
+        for (let i = 0; i < horasRegistro; i++) {
+          const propiedad = i.toString();
+          if (obj[propiedad] && typeof obj[propiedad] !== "string" && obj[propiedad].Temperatura) {
+            sumaTemperaturas += obj[propiedad].Temperatura;
+            cantTemperaturas++;
           }
         }
-        if (cantTemperaturas > 0) { 
-          const promedio = sumaTemperaturas / cantTemperaturas; // Calculamos el promedio de temperatura
-          promedios[fecha] = +promedio.toFixed(0); // Convertimos el promedio a número y redondeamos sin decimales, luego lo agregamos al objeto de promedios
+        if (cantTemperaturas > 0) {
+          const promedio = sumaTemperaturas / cantTemperaturas;
+          promedios[fecha] = +promedio.toFixed(0); // Convertimos el promedio a número y redondeamos sin decimales
         }
       });
       console.log(promedios); 
-      console.log(temperaturasHoraPorHora); 
       console.log(resultado);
       this.lineChartMethod(this.datos); 
       this.lineChartMethod2(promedios); 
@@ -120,25 +104,25 @@ export class HistorialPage implements AfterViewInit {
     });
   }
 
-  lineChartMethod2(promedios: {[fecha: string]: number}) { // Agregamos el objeto con los promedios como argumento
+  lineChartMethod2(promedios: { [fecha: string]: number }) {
     const hoy = moment();
     const etiquetasUltimos7dias = [...Array(7)].map((_, i) => {
       const fecha = hoy.clone().subtract(6 - i, 'days');
       return fecha.format('DD/MM/YYYY');
-    }).reverse(); 
-  
+    }).reverse();
+
     // Calcula el promedio de temperatura de los últimos 7 días
     const temperatura7dias = etiquetasUltimos7dias.map(fecha => {
       return promedios[fecha] || 0; // Si no hay un promedio para la fecha, asumimos que es cero
     });
-  
+
     this.lineChart2 = new Chart(this.Canvaxd.nativeElement, {
       type: 'line',
       data: {
         labels: etiquetasUltimos7dias,
         datasets: [
           {
-            label: 'Promedio en los últimos 7 días',
+            label: 'Promedio de temperatura de los últimos 7 días',
             fill: true,
             backgroundColor: 'rgba(212, 140, 1 ,0.4)',
             borderColor: 'rgba(212, 140, 1 )',
@@ -158,8 +142,8 @@ export class HistorialPage implements AfterViewInit {
             spanGaps: false,
             tension: 0.4,
           },
-        ]
-      }
+        ],
+      },
     });
   }
   
