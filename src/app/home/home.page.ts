@@ -43,6 +43,11 @@ export class HomePage {
     })
   }
 
-
 }
 
+//export class modoOscuro{
+ // constructor(){}
+ // onToggleColorTheme(event) {
+ //   console.log(event);
+ // }
+//}
