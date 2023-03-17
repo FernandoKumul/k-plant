@@ -34,17 +34,15 @@ export class HistorialPage implements AfterViewInit {
   datosGrafica() {
     this.firebaseService.getDatos().then((Registro: any) => { // Obtenemos los datos desde Firebase
       const resultado1 = JSON.parse(JSON.stringify(Registro))
+      const registroHoy = resultado1.Historial[(resultado1.Historial.length - 1)]
       const laFecha = moment();
       
       const fechaHoy = laFecha.format('DD/MM/YYYY');
-      resultado1.Historial.forEach((element:any, index:any) => {//Obtiene todos los registros diarios
-        if(element.Fecha == fechaHoy){ //Solo se ejecuta para el dia hoy
-          for(let i = 0; i<element.HorasRegistro; i++){
-            this.datos[(element[i].Hora)-6] = element[i].Hora //Las horas de hoy se asignan al array
-          }
-          return
+      if(registroHoy.Fecha == fechaHoy){
+        for(let i = 0; i<registroHoy.HorasRegistro; i++){
+          this.datos[(registroHoy[i].Hora)-6] = registroHoy[i].Temperatura;
         }
-      });
+      };
 
       const resultado = JSON.parse(JSON.stringify(Registro));
       const promedios: {[fecha: string]: number} = {};
@@ -122,7 +120,7 @@ export class HistorialPage implements AfterViewInit {
         labels: etiquetasUltimos7dias,
         datasets: [
           {
-            label: 'Promedio de temperatura de los últimos 7 días',
+            label: 'Temperatura',
             fill: true,
             backgroundColor: 'rgba(212, 140, 1 ,0.4)',
             borderColor: 'rgba(212, 140, 1 )',
