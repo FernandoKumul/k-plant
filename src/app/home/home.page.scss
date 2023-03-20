@@ -25,7 +25,6 @@
 .cardStyle {
   --ion-text-color: #9f7a33;
   --ion-item-background: #fff8e6;
-  box-shadow: none;
   --background: none;
 }
 
@@ -86,21 +85,39 @@
   flex-direction: column;
   align-items: center;
 }
+.noB{
+  box-shadow: none;
+}
 .iconos{
   color: #85BB6E;
   width: 35px;
   height: 35px;
 }
+.iconosB{
+  color: #fff8e6;
+  width: 30px;
+  height: 30px;
+}
 .boton{
-  background-color: none;
-  background: none;
   width: fit-content;
   height: fit-content;
 }
 
 .histo{
-  margin-left: 0.5rem;
   text-decoration: none;
   color: #9f7a33;
-  
+  display: flex;
+  align-items: center;
+  margin: 0.5rem;
+}
+.techoB{
+  text-decoration: none;
+  color: #fff8e6;
+  display: flex;
+  align-items: center;
+  margin: 0.5rem;
+}
+
+ion-button{
+  --background: #85BB6E;
 }

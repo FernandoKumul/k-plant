@@ -1,16 +1,13 @@
-<ion-header
-  [translucent]="true"
-  class="todo"
-  style="background-color: #fff8e6"
-  no-border
->
+<ion-header [translucent]="true" class="todo" style="background-color: #fff8e6" no-border>
   <ion-toolbar>
-    <ion-label class="ion-text-center"><p class="titulo">K-Plant</p></ion-label>
+    <ion-label class="ion-text-center">
+      <p class="titulo">K-Plant</p>
+    </ion-label>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="todo" scrollY="false">
-  <ion-card class="cardStyle flex">
+  <ion-card class="cardStyle flex noB">
     <ion-item lines="none">
       <ion-label class="ciudad">
         <span>
@@ -25,20 +22,11 @@
       </span>
     </ion-item>
     <ion-item lines="none">
-      <img
-        [src]="weatherIcon"
-        alt="clima"
-        class="clima_icon"
-        width="50px"
-        height="50px"
-      />
+      <img [src]="weatherIcon" alt="clima" class="clima_icon" width="50px" height="50px" />
       <p id="status">{{weatherStatus}}</p>
     </ion-item>
-    <ion-item lines="none">
-      <a [routerLink]="['/historial']" class="boton"><ion-icon name="file-tray-full-outline" class="iconos"></ion-icon></a>
-      <a [routerLink]="['/historial']" class="histo">Historial</a>
-    </ion-item>
   </ion-card>
+
   <ion-card class="cardStyle">
     <ion-item lines="none">
       <ion-icon name="water-outline" class="iconos"></ion-icon>
@@ -46,10 +34,23 @@
       <span slot="end">{{this.firebaseService.Humedad}}%</span>
     </ion-item>
     <ion-item lines="none">
-      <a [routerLink]="['/techo']" class="boton"><ion-icon name="options-outline" class="iconos"></ion-icon></a>
-      <a [routerLink]="['/techo']" class="boton" style="text-decoration: none;"><span class="histo">Apertura del techo: </span></a>
-      
+      <ion-icon name="git-commit-outline" class="iconos"></ion-icon>
+      <span>Apertura del techo: </span>
       <span slot="end">{{this.firebaseService.Aper}}%</span>
     </ion-item>
+    <ion-card class="cardStyle flex noB">
+      <ion-item lines="none">
+        <ion-button [routerLink]="['/historial']" class="boton">
+          <ion-icon name="file-tray-full-outline" class="iconosB"></ion-icon>
+          <span class="techoB">Historial</span>
+        </ion-button>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-button [routerLink]="['/techo']" class="boton">
+          <ion-icon name="options-outline" class="iconosB"></ion-icon>
+          <span class="techoB">Ajustar apertura</span>
+        </ion-button>
+      </ion-item>
+    </ion-card>
   </ion-card>
 </ion-content>
