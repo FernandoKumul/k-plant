@@ -1,9 +1,4 @@
-<ion-header
-  [translucent]="true"
-  class="todo"
-  style="background-color: #fff8e6"
-  no-border
->
+<ion-header [translucent]="true" class="todo" style="background-color: #fff8e6" no-border>
   <ion-toolbar>
     <ion-label class="top">
       <a [routerLink]="['/home']" class="botonT">
@@ -17,21 +12,19 @@
 
 <ion-content [fullscreen]="true">
   <div class="ion-padding">
-        <!--# es lo mismo que id-->
-
+    <!--# es lo mismo que id-->
     <ion-card style="background-color: #fff8e6">
       <ion-card-header>
-        Hoy :3 
+        Hoy :3
       </ion-card-header>
       <ion-card-content>
         <canvas #lineCanvas style="position: relative; height: 25vh; width: 40vw;"></canvas>
       </ion-card-content>
     </ion-card>
   </div>
-  
-  <div class="ion-padding">
-        <!--# es lo mismo que id-->
 
+  <div class="ion-padding">
+    <!--# es lo mismo que id-->
     <ion-card style="background-color: #fff8e6">
       <ion-card-header>
         Esta semana
